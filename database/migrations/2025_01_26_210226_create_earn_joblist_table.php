@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('earn_joblist', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('Job_title');
+            $table->double('pay_rate');
+            $table->Text('description');
             $table->timestamps();
         });
     }

@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('spending', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->date('Date');
+            $table->double('amount');
+            $table->foreignId('cat_id');
+            $table->Text('sort_description');
+            $table->longText('description');
             $table->timestamps();
         });
     }

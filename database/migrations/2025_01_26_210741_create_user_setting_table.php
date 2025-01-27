@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('user_setting', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('job_id');
+            $table->double('amount');
+            $table->enum('status', ['pending', 'completed'])->default('pending');
+            
             $table->timestamps();
         });
     }
