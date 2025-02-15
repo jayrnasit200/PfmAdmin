@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_setting', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id');
-            $table->double('amount');
-            $table->enum('status', ['pending', 'completed'])->default('5');
-            
+            $table->enum('star',['1', '2', '3', '4', '5'])->default('5');
+            $table->string('sort_description');
+            $table->Text('description');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_setting');
+        Schema::dropIfExists('feedback');
     }
 };

@@ -20,12 +20,17 @@ public function user(Request $request)
     // Register a new user
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
-
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:8',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $th) {
+            // return $th->validator->errors();
+            return response()->json(['error' => $th->validator->errors()], 201);
+        }
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -44,16 +49,23 @@ public function user(Request $request)
     // Login a user
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|string|email',
+                'password' => 'required|string',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $th) {
+            // return $th->validator->errors();
+            return response()->json(['error' => $th->validator->errors()], 201);
+        }
+        
 
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
         $user = Auth::user();
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json(['message' => 'Login successful', 'token' => $token, 'user' => $user]);
