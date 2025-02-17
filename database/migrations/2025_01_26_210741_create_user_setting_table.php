@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('job_id');
             $table->double('amount');
-            $table->enum('status', ['pending', 'completed'])->default('5');
+            $table->enum('status', ['pending', 'completed'])->default('pending');
             
             $table->timestamps();
         });

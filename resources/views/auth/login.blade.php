@@ -1,8 +1,8 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('title', 'Login')
 
-@section('content')
+@section('content') --}}
 <div class="container">
     <h2>Login</h2>
     <form method="POST" action="{{ route('login') }}">
@@ -18,4 +18,4 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>
-@endsection
+{{-- @endsection --}}
