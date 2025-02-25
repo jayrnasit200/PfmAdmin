@@ -18,4 +18,8 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/Users', [CategoryController::class, 'index']);
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/storecategory', [CategoryController::class, 'store']);
+Route::get('/newecategory', [CategoryController::class, 'newecategory']);
+Route::get('/newecategory', [CategoryController::class, 'newecategory']);
+Route::get('/category/delete/{id}', [CategoryController::class, 'categorydelete']);
