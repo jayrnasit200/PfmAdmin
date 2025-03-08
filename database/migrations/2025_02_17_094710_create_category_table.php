@@ -17,6 +17,24 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->timestamps();
         });
+        $data = [
+            ['name'=>'Bills','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Charity','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Eating out','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Expenses','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Family','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'General','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Gift','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Groceries','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Holidays','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'personal care','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Saving','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Shopping','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Transport','created_at'=>now(),'updated_at'=>now()],
+           
+
+        ];
+        DB::table('category')->insert($data);
     }
 
     /**

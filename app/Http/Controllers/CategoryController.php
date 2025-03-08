@@ -34,4 +34,8 @@ class CategoryController extends Controller
     $data = Category::where('id', $id)->first()->delete();
     return response()->json(['success' => true]);
    }
+   public function categorylist(){
+    $data = Category::all();
+    return response()->json(['success' => true, 'date'=> $data]);
+   }
 }
