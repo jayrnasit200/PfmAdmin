@@ -6,10 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Spending;
 class SpendingsController extends Controller
 {
-    // public function index()
-    // {
-
-    // }
+    public function index(Request $request)
+    {
+        // print_r($request->get('id'));
+        $data = Spending::where('user_id', $request->get('id'))->get();
+        if (empty($data)) {
+            
+        }
+        return response()->json(['data' => $data], 200);
+    }
     public function create(Request $request){
         // print_r($request->post());
         // exit;

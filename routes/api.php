@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 Route::get('/categorylist', [CategoryController::class, 'categorylist']); // Example protected route
 Route::post('/newspendings', [SpendingsController::class, 'create']); // Example protected route
+Route::get('/spendingslist', [SpendingsController::class, 'index']); // Example protected route
 
