@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('earn_rota', function (Blueprint $table) {
             $table->id();
             $table->foreignId('job_id');
-            $table->foreignId('user_id');
+            // $table->foreignId('user_id');
             $table->date('Date');
             $table->time('sTime', precision: 0);
             $table->time('eTime', precision: 0);

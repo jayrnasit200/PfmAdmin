@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('Date');
             $table->double('amount');
             $table->foreignId('user_id');
+            $table->foreignId('cat_id');
             // $table->Text('sort_description');
             $table->longText('description');
             $table->timestamps();
