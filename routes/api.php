@@ -34,3 +34,5 @@ Route::get('/jobedit/{id}', [JobController::class, 'edit']);
 Route::post('/jobupdate', [JobController::class, 'update']); 
 
 Route::post('/jobrota', [rotaController::class, 'index']); 
+Route::get('/getrota', [rotaController::class, 'getrota']); 
+Route::post('/updaterotastatus', [rotaController::class, 'updatestatus']); 
