@@ -6,7 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SpendingsController;
 use App\Http\Controllers\JobController;
-use App\Http\Controllers\rotaController
+use App\Http\Controllers\rotaController;
+use App\Http\Controllers\goalsController;
 ;
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -20,6 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']); 
 });
+Route::post('/updateprofile', [AuthController::class, 'profileupdate']); 
+
 Route::get('/categorylist', [CategoryController::class, 'categorylist']); 
 Route::post('/newspendings', [SpendingsController::class, 'create']); 
 Route::get('/spendingslist', [SpendingsController::class, 'index']); 
@@ -36,3 +39,7 @@ Route::post('/jobupdate', [JobController::class, 'update']);
 Route::post('/jobrota', [rotaController::class, 'index']); 
 Route::get('/getrota', [rotaController::class, 'getrota']); 
 Route::post('/updaterotastatus', [rotaController::class, 'updatestatus']); 
+
+
+Route::get('/lsitgoals', [goalsController::class, 'index']); 
+Route::post('/creategoals', [goalsController::class, 'create']); 

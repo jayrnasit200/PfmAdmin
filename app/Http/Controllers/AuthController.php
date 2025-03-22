@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class AuthController extends Controller
 {
     // Show the registration form
@@ -77,5 +77,14 @@ public function user(Request $request)
         $request->user()->tokens()->delete();
 
         return response()->json(['message' => 'Logged out successfully']);
+    }
+    public function profileupdate(Request $request){
+        $data= DB::table('users')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            "updated_at"=>now(),
+        ]);
+        // print_r($request->name);
+        return response()->json(['message' => 'Profile updated successfully']);
     }
 }
