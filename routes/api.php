@@ -8,7 +8,7 @@ use App\Http\Controllers\SpendingsController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\rotaController;
 use App\Http\Controllers\goalsController;
-;
+use App\Http\Controllers\earningController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -39,6 +39,8 @@ Route::post('/jobupdate', [JobController::class, 'update']);
 Route::post('/jobrota', [rotaController::class, 'index']); 
 Route::get('/getrota', [rotaController::class, 'getrota']); 
 Route::post('/updaterotastatus', [rotaController::class, 'updatestatus']); 
+
+Route::get('/getearnings', [earningController::class, 'index']); 
 
 
 Route::get('/lsitgoals', [goalsController::class, 'index']); 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 class rotaController extends Controller
 {
@@ -20,8 +21,6 @@ class rotaController extends Controller
             ['job_id', '=', $d['job']],
             ['Date', '=', $d['date']], 
             ])->get()->first();
-            // print_r($data->id);
-            // echo "<br>";
             DB::table('earn_rota')->where('id', $data->id)->update([
                 'Date' => $d['date'],
                 'sTime' => $d['start_time'],
@@ -29,7 +28,6 @@ class rotaController extends Controller
                 'status' => $data->status,
                 "updated_at"=>now(),
             ]);
-    //   return response()->json(['message' => $data], 200);
 
         }else{
             if($d['start_time'] != $d['end_time']){
@@ -67,6 +65,28 @@ class rotaController extends Controller
                 'status' => $request->status,
                 "updated_at"=>now(),
             ]);
+
+            
+            if($request->status=="completed"){
+               
+                $start = Carbon::parse($request->startTime);
+                $end = Carbon::parse($request->endTime);
+                $totalMinutes = $start->diffInMinutes($end)/60;
+                $job = DB::table('earn_joblist')->where('id', $request->jobid)->get()->first();
+                $earnamount = $totalMinutes * $job->pay_rate;
+                DB::table('earn')->insert([
+                    "date_earned"=>$request->date,
+                    'amount' => $earnamount,
+                    'user_id' => $job->user_id,
+                    'category' => "Job",
+                    'source' => "Salary",
+                    'job_id' => $request->jobid,
+                    "created_at"=>now(),
+                    "updated_at"=>now(),
+                ]);
+            }
+            // print_r($totalMinutes);
+            // exit;
             return response()->json(['message' => 'Status updated successfully'], 200);
         }
 }
