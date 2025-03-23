@@ -37,6 +37,34 @@ class goalsController extends Controller
             "created_at"=>now(),
             "updated_at"=>now(),
         ]);
-        return response()->json(['message' => 'Goal created successfully'], 201);
+        return response()->json(['message' => 'Goal created successfully'], 200);
     }
+    public function goalcontri(Request $request) {
+        $goals = DB::table('goals')->where('id', $request->get('goal_id'))->get()->first();
+        $newsave = $goals->saved_amount + $request->get('amount');
+        if ($newsave <= $goals->target_amount) {
+            
+        $user = DB::table('goals_contribution')->insert([
+            'amount' => $request->amount,
+            'notes' => $request->note,
+            'goal_id' => $request->goal_id,
+            'date' => $request->date,
+            "created_at"=>now(),
+            "updated_at"=>now(),
+        ]);
+        DB::table('goals')->where('id', $request->get('goal_id'))->update(['saved_amount' => $newsave,]);
+        return response()->json(['message' => 'Goal contribution added successfully'], 200);
+        }else{
+            return response()->json(['message' => 'Goal contribution failed'], 401);
+        }
+        
+        // print_r($goals->);
+        // exit;
+        // return response()->json(['message' => 'Goal Contribution created successfully'], 200);
+    }
+    public function goalcontriList(Request $request) {
+        $data = DB::table('goals_contribution')->where('goal_id', $request->id)->get();
+        return response()->json($data);
+    }
+
 }

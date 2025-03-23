@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']); 
 });
 Route::post('/updateprofile', [AuthController::class, 'profileupdate']); 
+Route::get('/Homepage', [AuthController::class, 'Homepage']); 
 
 Route::get('/categorylist', [CategoryController::class, 'categorylist']); 
 Route::post('/newspendings', [SpendingsController::class, 'create']); 
@@ -42,6 +43,7 @@ Route::post('/updaterotastatus', [rotaController::class, 'updatestatus']);
 
 Route::get('/getearnings', [earningController::class, 'index']); 
 
-
 Route::get('/lsitgoals', [goalsController::class, 'index']); 
 Route::post('/creategoals', [goalsController::class, 'create']); 
+Route::post('/goalcontri', [goalsController::class, 'goalcontri']); 
+Route::get('/goalcontrilist', [goalsController::class, 'goalcontrilist']); 

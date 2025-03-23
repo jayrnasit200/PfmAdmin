@@ -50,7 +50,7 @@ class rotaController extends Controller
     public function getrota(Request $request){
         $data = $request->all();
         
-        $rota = DB::table('earn_rota')->where('job_id', $request->job)->get();
+        $rota = DB::table('earn_rota')->where('job_id', $request->job)->orderBy('Date', 'asc')->get();
      
         return response()->json($rota);
 
