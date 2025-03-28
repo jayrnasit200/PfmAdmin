@@ -51,6 +51,7 @@
   </head>
 
   <body>
+
     <main class="main" id="top">
       <div class="container" data-layout="container">
         <script>
@@ -271,7 +272,7 @@
                       <a class="dropdown-item" href="#!">Feedback</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="pages/user/settings.html">Settings</a>
-                      <a class="dropdown-item" href="pages/authentication/card/logout.html">Logout</a>
+                      <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                     </div>
                   </div>
                 </li>
@@ -315,7 +316,7 @@
                     <div class="d-flex align-items-center"><span class="fas fa-chart-pie"></span><span class="nav-link-text ps-1">Dashboard</span></div>
                   </a>
                 </li>
-                <li class="nav-item"><a class="nav-link " href="{{ URL::to('/admin')}}" >
+                <li class="nav-item"><a class="nav-link " href="{{ URL::to('/users')}}" >
                   <div class="d-flex align-items-center"><span class="fas fa-user-tie"></span><span class="nav-link-text ps-1">Users</span></div>
                 </a>
               </li>
@@ -383,12 +384,12 @@
                       <div class="row">
                         <div class="col-6 col-xxl-3">
                           <div class="nav flex-column">
-                            <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/logout.html">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html">Lock screen</a>
+                            <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="{{ url('logout') }}">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html">Lock screen</a>
                           </div>
                         </div>
                         <div class="col-6 col-xxl-3">
                           <div class="nav flex-column">
-                            <p class="nav-link text-700 mb-0 fw-bold">Card Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/logout.html">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/lock-screen.html">Lock screen</a>
+                            <p class="nav-link text-700 mb-0 fw-bold">Card Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="{{ url('logout') }}">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/lock-screen.html">Lock screen</a>
                           </div>
                         </div>
                         <div class="col-6 col-xxl-3">
@@ -695,7 +696,7 @@
                   <a class="dropdown-item" href="#!">Feedback</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="pages/user/settings.html">Settings</a>
-                  <a class="dropdown-item" href="pages/authentication/card/logout.html">Logout</a>
+                  <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                 </div>
               </div>
             </li>
@@ -757,7 +758,7 @@
                 <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
                     <a class="dropdown-item" href="pages/user/settings.html">Settings</a>
-                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Logout</a>
+                    <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                   </div>
                 </div>
               </li>
@@ -809,12 +810,12 @@
                         <div class="row">
                           <div class="col-6 col-xxl-3">
                             <div class="nav flex-column">
-                              <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/logout.html">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html">Lock screen</a>
+                              <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="{{ url('logout') }}">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html">Lock screen</a>
                             </div>
                           </div>
                           <div class="col-6 col-xxl-3">
                             <div class="nav flex-column">
-                              <p class="nav-link text-700 mb-0 fw-bold">Card Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/logout.html">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/lock-screen.html">Lock screen</a>
+                              <p class="nav-link text-700 mb-0 fw-bold">Card Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/login.html">Login</a><a class="nav-link py-1 link-600 fw-medium" href="{{ url('logout') }}">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/register.html">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/forgot-password.html">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/confirm-mail.html">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/reset-password.html">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/lock-screen.html">Lock screen</a>
                             </div>
                           </div>
                           <div class="col-6 col-xxl-3">
@@ -1123,7 +1124,7 @@
                     <a class="dropdown-item" href="#!">Feedback</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="pages/user/settings.html">Settings</a>
-                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Logout</a>
+                    <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                   </div>
                 </div>
               </li>

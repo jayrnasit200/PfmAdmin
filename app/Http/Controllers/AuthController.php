@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 class AuthController extends Controller
 {
+    public function index(Request $request)
+    {
+        $data["userlist"] =DB::table('users')->get();
+        $data["usercount"] =DB::table('users')->get()->count();
+        $data["usergoals"] =DB::table('goals as gol')
+        ->join('users as use', 'use.id', '=', 'gol.user_id')
+        ->select('gol.name as goalname', 'use.name as username', 'gol.target_amount', 'gol.saved_amount', 'gol.deadline')   
+        ->get();
+        // print($data["usergoals"]);
+        // exit;
+        return view('welcome')->with('data',$data);
+        // return view('welcome');
+    }
     // Show the registration form
     public function showRegistrationForm()
     {
@@ -39,7 +52,45 @@ public function user(Request $request)
 
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
     }
+    public function registeradmin(Request $request)
+    {
+       
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:8',
+            ]);
+      
+        
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route('login');
+    }
+     public function loginadmin(Request $request) {
+            // Validate input
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
 
+        // Attempt login
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+
+            // Check if user is admin
+            if ($user->is_admin == 'yes') {
+                return redirect("/"); // Redirect to admin panel
+            } else {
+                return redirect()->route('login')->with('message', 'Sorry You are not an admin.'); // Redirect to user dashboard
+            }
+        }
+
+        // If login fails, return back with error
+        return back()->withErrors(['email' => 'Invalid credentials.'])->withInput();
+      }
     // Show the login form
     public function showLoginForm()
     {
@@ -77,6 +128,16 @@ public function user(Request $request)
         $request->user()->tokens()->delete();
 
         return response()->json(['message' => 'Logged out successfully']);
+    }
+    public function logoutadmin(Request $request)
+    {
+        Auth::logout(); // Log out the user
+
+        $request->session()->invalidate(); // Invalidate the session
+        $request->session()->regenerateToken(); // Regenerate CSRF token
+
+        return redirect()->route('login')->with('success', 'You have been logged out.');
+    
     }
     public function profileupdate(Request $request){
         $data= DB::table('users')->where('id', $request->id)->update([
