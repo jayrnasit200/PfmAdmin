@@ -16,4 +16,9 @@ class earningController extends Controller
         }
         return response()->json(['data' => $earnings], 200);
     }
+
+    public function getearningsnyuser(Request $request) {
+        $earnings = DB::table('earn')->where('user_id', $request->id)->get();
+        return response()->json(['data' => $earnings], 200);
+    }
 }

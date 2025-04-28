@@ -25,7 +25,7 @@
                 <thead class="bg-200 text-900">
                   <tr>
                     <th class="sort" data-sort="name">Name</th>
-                    <th class="sort" data-sort="age">view</th>
+                    <th class="sort" data-sort="age">admin</th>
                     <th class="sort" data-sort="age">Admin</th>
 
                   </tr>
@@ -34,8 +34,9 @@
                   @foreach($users as $y)
                   <tr>
                     <td class="name">{{$y->name}}</td>
+                    <td class="admin">{{$y->is_admin}}</td>
                    
-                    <td class="age"><a href="{{ url('/userview',$y->id) }}" class="btn btn-primary"><i class="far fa-clone"></i></a></td>
+                    {{-- <td class="age"><a href="{{ url('/userview',$y->id) }}" class="btn btn-primary"><i class="far fa-clone"></i></a></td> --}}
                     <td class="age"><a href="{{ url('/useradmin',$y->id) }}" class="btn btn-success"><i class="fa fa-check"></i></a></td>
                   </tr>
                         

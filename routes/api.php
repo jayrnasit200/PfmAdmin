@@ -42,8 +42,10 @@ Route::get('/getrota', [rotaController::class, 'getrota']);
 Route::post('/updaterotastatus', [rotaController::class, 'updatestatus']); 
 
 Route::get('/getearnings', [earningController::class, 'index']); 
+Route::get('/getearningsnyuser', [earningController::class, 'getearningsnyuser']); 
 
 Route::get('/lsitgoals', [goalsController::class, 'index']); 
 Route::post('/creategoals', [goalsController::class, 'create']); 
 Route::post('/goalcontri', [goalsController::class, 'goalcontri']); 
 Route::get('/goalcontrilist', [goalsController::class, 'goalcontrilist']); 
+Route::post('/goalupdate', [goalsController::class, 'goalupdate']); 

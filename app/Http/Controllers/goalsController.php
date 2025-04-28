@@ -66,5 +66,12 @@ class goalsController extends Controller
         $data = DB::table('goals_contribution')->where('goal_id', $request->id)->get();
         return response()->json($data);
     }
-
+    public function goalupdate(Request $request) {
+        $user = DB::table('goals')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'target_amount' => $request->target_amount,
+            "updated_at"=>now(),
+        ]);
+        return response()->json(['message' => 'Goal updated successfully'], 200);
+    }
 }

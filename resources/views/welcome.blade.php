@@ -77,8 +77,8 @@
                 <tr>
                     <td>{{ $goal->username }}</td>
                     <td>{{ $goal->goalname }}</td>
-                    <td>${{ number_format($goal->target_amount, 2) }}</td>
-                    <td>${{ number_format($goal->saved_amount, 2) }}</td>
+                    <td>£{{ number_format($goal->target_amount, 2) }}</td>
+                    <td>£{{ number_format($goal->saved_amount, 2) }}</td>
                     <td>{{ $goal->deadline }}</td>
                 </tr>
                 @endforeach

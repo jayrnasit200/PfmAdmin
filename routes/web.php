@@ -11,7 +11,15 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
-
+// Route::get('/', function() {
+//     print_r(Route::get());
+// Artisan::call('route:list');
+// Artisan::call('config:clear');
+// Artisan::call('route:clear');
+// Artisan::call('view:clear');
+    
+// return "Cache cleared!";
+// });
 // Web routes for authentication
 
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
