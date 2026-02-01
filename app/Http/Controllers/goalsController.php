@@ -9,7 +9,9 @@ class goalsController extends Controller
 {
     public function index(Request $request){
        $data = DB::table('goals')->where('user_id', $request->get('id'))->get();
-      return response()->json($data);
+       // print_r($request->target_amount);
+        // exit;
+       return response()->json($data);
 
     }
     public function create(Request $request){
@@ -27,7 +29,7 @@ class goalsController extends Controller
             // return $th->validator->errors();
             return response()->json(['error' => $th->validator->errors()], 201);
         }
-        
+
         $user = DB::table('goals')->insert([
             'user_id' => $request->user_id,
             'target_amount' => $request->target_amount,
@@ -43,7 +45,7 @@ class goalsController extends Controller
         $goals = DB::table('goals')->where('id', $request->get('goal_id'))->get()->first();
         $newsave = $goals->saved_amount + $request->get('amount');
         if ($newsave <= $goals->target_amount) {
-            
+
         $user = DB::table('goals_contribution')->insert([
             'amount' => $request->amount,
             'notes' => $request->note,
@@ -57,7 +59,7 @@ class goalsController extends Controller
         }else{
             return response()->json(['message' => 'Goal contribution failed'], 401);
         }
-        
+
         // print_r($goals->);
         // exit;
         // return response()->json(['message' => 'Goal Contribution created successfully'], 200);
